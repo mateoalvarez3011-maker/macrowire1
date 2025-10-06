@@ -30,16 +30,9 @@ export async function GET(req: NextRequest) {
       const { tickers, countries, orgs, impact, risk } = await extraerEntidadesYMetricas(raw);
 
       await supabase.from("articles").insert([{
-        title,
-        summary,
-        source_url: link,
-        published_at,
-        impact_score: impact ?? 0,
-        risk_level: risk ?? "bajo",
-        topics: null,
-        tickers: tickers ?? [],
-        countries: countries ?? [],
-        orgs: orgs ?? []
+        title, summary, source_url: link, published_at,
+        impact_score: impact ?? 0, risk_level: risk ?? "bajo",
+        topics: null, tickers: tickers ?? [], countries: countries ?? [], orgs: orgs ?? []
       }]);
     }
   }
